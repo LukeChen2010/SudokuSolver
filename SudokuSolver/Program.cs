@@ -47,11 +47,12 @@ namespace SudokuSolver
         {
             for (int i = 0; i < 9; i++)
             {
+                //Check if all rows are valid
                 if (!ComboValid(0 + i * 9, 1 + i * 9, 2 + i * 9, 3 + i * 9, 4 + i * 9, 5 + i * 9, 6 + i * 9, 7 + i * 9, 8 + i * 9))
                 {
                     return false;
                 }
-
+                //Check if all columns are valid
                 if (!ComboValid(0 + i, 9 + i, 18 + i, 27 + i, 36 + i, 45 + i, 54 + i, 63 + i, 72 + i))
                 {
                     return false;
@@ -62,6 +63,7 @@ namespace SudokuSolver
             {
                 for (int j = 0; j < 3; j++)
                 {
+                    //Check if all squares are valid
                     if (!ComboValid(0 + 27 * i + 3 * j, 1 + 27 * i + 3 * j, 2 + 27 * i + 3 * j, 9 + 27 * i + 3 * j, 10 + 27 * i + 3 * j, 11 + 27 * i + 3 * j, 18 + 27 * i + 3 * j, 19 + 27 * i + 3 * j, 20 + 27 * i + 3 * j))
                     {
                         return false;
@@ -118,8 +120,6 @@ namespace SudokuSolver
             if (!myBoard.BoardValid())
             {
                 myBoard = null;
-                GC.Collect();
-                GC.WaitForPendingFinalizers();
                 return;
             }
 
